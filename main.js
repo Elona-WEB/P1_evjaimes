@@ -174,6 +174,7 @@ function tablaCarrito(pedido) {
     let element = pedido[key];
     total += parseInt(element.quantity) * parseInt(element.unitPrice);
     var hilera = document.createElement("tr");
+    hilera.id="tableRow"+(i+1);
 
     var celda1 = document.createElement("td");
     var item = document.createTextNode(i + 1);

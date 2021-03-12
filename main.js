@@ -26,6 +26,15 @@ function limpiarPantalla() {
   }
 }
 
+//LIMPIEZA DE CARRITO
+
+function limpiarCarritoPantalla(){
+  var node = document.getElementById("cartasProductos");
+  while (node.firstChild) {
+    node.removeChild(node.firstChild);
+  }
+}
+
 //FUNCIÓN DE MANIPULACIÓN DE DOM
 //CAMBIO CHIQUITO
 //PRODUCTOS
@@ -194,7 +203,7 @@ function tablaCarrito(pedido) {
     let pp= new Object;
     pp['item']=i+1;
     pp['quantity']=element.quantity;
-    pp['description']=element.name;
+    pp['description']=key;
     pp['unitPrice']=element.unitPrice;
 
     arregloFinal.push(pp);
@@ -246,6 +255,7 @@ function tablaCarrito(pedido) {
 
   //BOTON DE CONFIRMAR ORDEN
   boton2.onclick = () => {
+    limpiarCarritoPantalla();
     console.log(arregloFinal);
     carrito = [];
     let num = document.getElementById("numero");

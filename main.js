@@ -1,6 +1,6 @@
 carrito = [];
 
-const URL ="restaurant.json"
+const URL = "restaurant.json";
 //CARGA
 const t = callback => {
   fetch(URL).then(element => {
@@ -16,6 +16,8 @@ function ponerProductos(comida, section) {
   // //Agarramos el div de los productos
   let divProductos = document.getElementById("cartasProductos");
   let divNombre = document.getElementById("tituloProductos");
+
+  //Productos ordenados
   let divContainerRow = document.createElement("div");
   divContainerRow.className = "row";
 
@@ -90,5 +92,37 @@ burguers.onclick = () => {
   t(datos => {
     comida = datos[0].products;
     ponerProductos(comida, "Burguers");
+  });
+};
+
+let tacos = document.getElementById("tacos");
+tacos.onclick = () => {
+  t(datos => {
+    comida = datos[1].products;
+    ponerProductos(comida, "Tacos");
+  });
+};
+
+let salads = document.getElementById("salads");
+salads.onclick = () => {
+  t(datos => {
+    comida = datos[2].products;
+    ponerProductos(comida, "Salads");
+  });
+};
+
+let desserts = document.getElementById("desserts");
+desserts.onclick = () => {
+  t(datos => {
+    comida = datos[3].products;
+    ponerProductos(comida, "Desserts");
+  });
+};
+
+let drinks = document.getElementById("drinks");
+drinks.onclick = () => {
+  t(datos => {
+    comida = datos[4].products;
+    ponerProductos(comida, "Drinks & Slides");
   });
 };

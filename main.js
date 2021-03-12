@@ -28,7 +28,7 @@ function limpiarPantalla() {
 
 //LIMPIEZA DE CARRITO
 
-function limpiarCarritoPantalla(){
+function limpiarCarritoPantalla() {
   var node = document.getElementById("cartasProductos");
   while (node.firstChild) {
     node.removeChild(node.firstChild);
@@ -150,11 +150,16 @@ function tablaCarrito(pedido) {
   var j = document.createTextNode("Amount");
   thead5.appendChild(j);
 
+  var thead6 = document.createElement("th");
+  var k = document.createTextNode("Modify");
+  thead6.appendChild(k);
+
   primera.appendChild(thead1);
   primera.appendChild(thead2);
   primera.appendChild(thead3);
   primera.appendChild(thead4);
   primera.appendChild(thead5);
+  primera.appendChild(thead6);
 
   tbl.appendChild(primera);
 
@@ -195,16 +200,28 @@ function tablaCarrito(pedido) {
     celda.appendChild(num);
     hilera.appendChild(celda);
 
+    var celda = document.createElement("td");
+    let botonMas = document.createElement("a");
+    botonMas.className = "btn btn-primary";
+    botonMas.innerText = "+";
+
+    let botonMenos = document.createElement("a");
+    botonMenos.className = "btn btn-primary";
+    botonMenos.innerText = "-";
+    celda.appendChild(botonMenos);
+    celda.appendChild(botonMas);
+    hilera.appendChild(celda);
+
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
     tbdy.appendChild(hilera);
 
     //Arreglo final
 
-    let pp= new Object;
-    pp['item']=i+1;
-    pp['quantity']=element.quantity;
-    pp['description']=key;
-    pp['unitPrice']=element.unitPrice;
+    let pp = new Object();
+    pp["item"] = i + 1;
+    pp["quantity"] = element.quantity;
+    pp["description"] = key;
+    pp["unitPrice"] = element.unitPrice;
 
     arregloFinal.push(pp);
 

@@ -149,6 +149,10 @@ function tablaCarrito(pedido) {
 
   tbl.appendChild(primera);
 
+  //Arreglo bonito
+
+  let arregloFinal = [];
+
   var tbdy = document.createElement("tbody");
   let i = 0;
   let total = 0;
@@ -184,6 +188,17 @@ function tablaCarrito(pedido) {
 
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
     tbdy.appendChild(hilera);
+
+    //Arreglo final
+
+    let pp= new Object;
+    pp['item']=i+1;
+    pp['quantity']=element.quantity;
+    pp['description']=element.name;
+    pp['unitPrice']=element.unitPrice;
+
+    arregloFinal.push(pp);
+
     i = i + 1;
   }
   tbl.appendChild(tbdy);
@@ -227,19 +242,15 @@ function tablaCarrito(pedido) {
 
   conte.appendChild(dos);
 
-
   //BOTONES A FUNCIONAR
-   
-  
-  //BOTON DE CONFIRMAR ORDEN
-   boton2.onclick = () => {
-    console.log(carrito);
-    carrito=[];
-    let num = document.getElementById("numero");
-      num.innerHTML = carrito.length + " Items";
-  };
 
-  
+  //BOTON DE CONFIRMAR ORDEN
+  boton2.onclick = () => {
+    console.log(arregloFinal);
+    carrito = [];
+    let num = document.getElementById("numero");
+    num.innerHTML = carrito.length + " Items";
+  };
 }
 
 //FUNCIONES DE CLICK

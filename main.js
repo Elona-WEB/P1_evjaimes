@@ -27,7 +27,7 @@ function limpiarPantalla() {
 }
 
 //FUNCIÓN DE MANIPULACIÓN DE DOM
-
+//CAMBIO CHIQUITO
 //PRODUCTOS
 function ponerProductos(comida, section) {
   // //Agarramos el div de los productos

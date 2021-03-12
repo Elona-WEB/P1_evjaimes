@@ -175,32 +175,32 @@ function tablaCarrito(pedido) {
     total += parseInt(element.quantity) * parseInt(element.unitPrice);
     var hilera = document.createElement("tr");
 
-    var celda = document.createElement("td");
-    var num = document.createTextNode(i + 1);
-    celda.appendChild(num);
-    hilera.appendChild(celda);
+    var celda1 = document.createElement("td");
+    var item = document.createTextNode(i + 1);
+    celda1.appendChild(item);
+    hilera.appendChild(celda1);
 
-    var celda = document.createElement("td");
-    var num = document.createTextNode(element.quantity);
-    celda.appendChild(num);
-    hilera.appendChild(celda);
+    var celda2= document.createElement("td");
+    var qa = document.createTextNode(element.quantity);
+    celda2.appendChild(qa);
+    hilera.appendChild(celda2);
 
-    var celda = document.createElement("td");
-    var num = document.createTextNode(element.description);
-    celda.appendChild(num);
-    hilera.appendChild(celda);
+    var celda3 = document.createElement("td");
+    var des = document.createTextNode(element.description);
+    celda3.appendChild(des);
+    hilera.appendChild(celda3);
 
-    var celda = document.createElement("td");
-    var num = document.createTextNode(element.unitPrice);
-    celda.appendChild(num);
-    hilera.appendChild(celda);
+    var celda4 = document.createElement("td");
+    var pri = document.createTextNode(element.unitPrice);
+    celda4.appendChild(pri);
+    hilera.appendChild(celda4);
 
-    var celda = document.createElement("td");
-    var num = document.createTextNode(element.amount);
-    celda.appendChild(num);
-    hilera.appendChild(celda);
+    var celda5 = document.createElement("td");
+    var am = document.createTextNode(element.amount);
+    celda5.appendChild(am);
+    hilera.appendChild(celda5);
 
-    var celda = document.createElement("td");
+    var celda6 = document.createElement("td");
     let botonMas = document.createElement("a");
     botonMas.className = "btn btn-primary";
     botonMas.innerText = "+";
@@ -208,12 +208,32 @@ function tablaCarrito(pedido) {
     let botonMenos = document.createElement("a");
     botonMenos.className = "btn btn-primary";
     botonMenos.innerText = "-";
-    celda.appendChild(botonMenos);
-    celda.appendChild(botonMas);
-    hilera.appendChild(celda);
+    celda6.appendChild(botonMenos);
+    celda6.appendChild(botonMas);
+    hilera.appendChild(celda6);
 
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
     tbdy.appendChild(hilera);
+
+    //Botones de más y menos funcionales
+
+    botonMenos.onclick = () => {
+      let pr=parseInt(celda4.firstChild);
+      let Am=parseInt(celda5.firstChild);
+      let Qa=parseInt(celda2.firstChild);
+      celda2.removeChild(celda2.firstChild);
+      celda5.removeChild(celda5.firstChild);
+      console.log(Am);
+      console.log(Qa);
+      console.log(pr);
+      let newAM=document.createTextNode(Am-pr);
+      let newQa=document.createTextNode(Qa-1);
+      celda2.appendChild(newQa);
+      celda5.append(newAM);
+
+    };
+
+    botonMas.onclick = () => {};
 
     //Arreglo final
 

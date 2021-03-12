@@ -218,14 +218,13 @@ function tablaCarrito(pedido) {
     //Botones de más y menos funcionales
 
     botonMenos.onclick = () => {
-      let pr=parseInt(celda4.firstChild);
-      let Am=parseInt(celda5.firstChild);
-      let Qa=parseInt(celda2.firstChild);
+      let pr=celda4.firstChild.nodeValue;
+      let Am=celda5.firstChild.nodeValue;
+      let Qa=celda2.firstChild.nodeValue;
       celda2.removeChild(celda2.firstChild);
       celda5.removeChild(celda5.firstChild);
-      console.log(Am);
-      console.log(Qa);
-      console.log(pr);
+      console.log(typeof Qa);
+      console.log(typeof pr);
       let newAM=document.createTextNode(Am-pr);
       let newQa=document.createTextNode(Qa-1);
       celda2.appendChild(newQa);

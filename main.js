@@ -179,7 +179,7 @@ function ponerProductos(comida, section) {
 
     //Creamos la carta
     let card = document.createElement("div");
-    card.className = "card";
+    card.className = "card h-200";
 
     //Creamos el cuerpo de la carta
     let cardBody = document.createElement("div");
@@ -204,7 +204,7 @@ function ponerProductos(comida, section) {
 
     //Price
     let price = document.createElement("p");
-    price.innerText = yes.price;
+    price.innerHTML = "$" + yes.price;
     price.className = "card-text";
 
     //Boton de carrito
@@ -352,7 +352,7 @@ function tablaCarrito(pedido, actu) {
     };
 
     //Arreglo final
-    if (element.quantity != 0) {
+    if (element.quantity > 0) {
       let pp = new Object();
       pp["item"] = i + 1;
       pp["quantity"] = element.quantity;
@@ -430,7 +430,7 @@ burguers.onclick = () => {
   limpiarPantalla();
   t((datos) => {
     comida = datos[0].products;
-    ponerProductos(comida, "Burguers");
+    ponerProductos(comida, "Burgers");
   });
 };
 

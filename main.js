@@ -118,7 +118,15 @@ function displayModal() {
     modal.style.display = "none";
   };
 
-  botontrue, (onclick = () => {});
+  botontrue.onclick = () => {
+    carrito = [];
+    let items = document.getElementById("numero");
+    items.innerHTML = "0 Items";
+    pedido = {};
+    limpiarCarritoPantalla();
+    tablaCarrito(pedido, true);
+    modal.style.display = "none";
+  };
 }
 
 //ACTUALIZACIÓN DEL DICT

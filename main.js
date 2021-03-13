@@ -326,11 +326,11 @@ function tablaCarrito(pedido, actu) {
 
     var celda6 = document.createElement("td");
     let botonMas = document.createElement("a");
-    botonMas.className = "btn btn-primary";
+    botonMas.className = "btn btn-secondary adding";
     botonMas.innerText = "+";
 
     let botonMenos = document.createElement("a");
-    botonMenos.className = "btn btn-primary";
+    botonMenos.className = "btn btn-secondary adding";
     botonMenos.innerText = "-";
 
     celda6.appendChild(botonMenos);
@@ -385,10 +385,10 @@ function tablaCarrito(pedido, actu) {
 
   //Botones
   let col2 = document.createElement("div");
-  col2.className = "col-2";
+  col2.className = "col-0.5";
 
   let boton1 = document.createElement("a");
-  boton1.className = "btn btn-primary";
+  boton1.className = "btn btn-danger";
   boton1.innerText = "Cancel";
 
   let col3 = document.createElement("div");

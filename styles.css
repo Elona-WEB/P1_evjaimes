@@ -38,10 +38,23 @@
 
 /*TABLA DE CARRITO*/
 
-table {
+table{
   align-items: center;
-  width: 100%;
 }
+
+.btn-primary{
+  background-color: rgb(241, 189, 189);
+  border-color:black;
+}
+.adding{
+  margin:0.5em;
+  width: 20%;
+  height: 20%;
+  font-weight: bold;
+  text-align: center;
+}
+
+
 
 /*PRODUCTOS*/
 .card {

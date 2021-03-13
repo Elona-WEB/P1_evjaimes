@@ -56,24 +56,21 @@ function createModal() {
   content.className = "modal-content";
 
   let header = document.createElement("div");
-  header.className = "moda-header";
-  let textoHeader = document.createElement("h4");
-  textoHeader.innerText = "Cancel the order";
+  header.className = "modal-header";
+  let textoHeader = document.createElement("h3");
+  textoHeader.innerHTML = "Cancel the order";
   let close = document.createElement("span");
   close.className = "close";
   close.id = "close";
   close.innerHTML = "&times;";
-  header.appendChild(close);
   header.appendChild(textoHeader);
+  header.appendChild(close);
   header.appendChild(hr);
   content.appendChild(header);
 
   let body = document.createElement("div");
   body.className = "modal-body";
-  let cosito = document.createElement("p");
-  cosito.innerText = "Are you sure about cancelling the order?";
-  body.appendChild(cosito);
-  body.appendChild(hr);
+  body.innerHTML = "Are you sure about cancelling the order?";
   content.appendChild(body);
 
   //Footer
@@ -83,7 +80,7 @@ function createModal() {
   let botones = document.createElement("div");
   botones.className = "container";
   let ro1 = document.createElement("div");
-  ro1.className = "row";
+  ro1.className = "row botones";
   let botontrue = document.createElement("a");
   botontrue.className = "btn btn-primary";
   botontrue.id = "botontrue";
@@ -91,10 +88,10 @@ function createModal() {
   ro1.appendChild(botontrue);
 
   let ro2 = document.createElement("div");
-  ro2.className = "row";
+  ro2.className = "row botones";
 
   let botonfalse = document.createElement("a");
-  botonfalse.className = "btn btn-primary";
+  botonfalse.className = "btn btn-danger";
   botonfalse.id = "botonfalse";
   botonfalse.innerText = "No, I want to continue adding products";
   ro2.appendChild(botonfalse);

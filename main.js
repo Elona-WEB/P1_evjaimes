@@ -1,4 +1,6 @@
 carrito = [];
+modal = null;
+createModal();
 
 const URL = "restaurant.json";
 //CARGA
@@ -35,12 +37,14 @@ function limpiarCarritoPantalla() {
   }
 }
 
-//LLAMADO DEL MODAL
+//MODAL
 
-function displayModal() {
+//CREACIÓN
+
+function createModal() {
   //Creamos el modal
   // create the background modal div
-  const modal = document.createElement("div");
+  modal = document.createElement("div");
   modal.classList.add("modal");
   // create the inner modal div with appended argument
   const child = document.createElement("div");
@@ -57,6 +61,7 @@ function displayModal() {
   textoHeader.innerText = "Cancel the order";
   let close = document.createElement("span");
   close.className = "close";
+  close.id = "close";
   close.innerHTML = "&times;";
   header.appendChild(close);
   header.appendChild(textoHeader);
@@ -81,6 +86,7 @@ function displayModal() {
   ro1.className = "row";
   let botontrue = document.createElement("a");
   botontrue.className = "btn btn-primary";
+  botontrue.id = "botontrue";
   botontrue.innerText = "Yes, I want to cancel the order";
   ro1.appendChild(botontrue);
 
@@ -89,6 +95,7 @@ function displayModal() {
 
   let botonfalse = document.createElement("a");
   botonfalse.className = "btn btn-primary";
+  botonfalse.id = "botonfalse";
   botonfalse.innerText = "No, I want to continue adding products";
   ro2.appendChild(botonfalse);
 
@@ -102,8 +109,13 @@ function displayModal() {
   modal.appendChild(child);
 
   document.body.appendChild(modal);
+}
+
+//LLAMADO
+function displayModal() {
   modal.style.display = "block";
 
+  let close = document.getElementById("close");
   close.onclick = () => {
     modal.style.display = "none";
   };
@@ -114,10 +126,13 @@ function displayModal() {
     }
   };
 
+  //REFERNECIA
+  let botonfalse = document.getElementById("botonfalse");
   botonfalse.onclick = () => {
     modal.style.display = "none";
   };
 
+  let botontrue = document.getElementById("botontrue");
   botontrue.onclick = () => {
     carrito = [];
     getNumeroItems("0 Items");

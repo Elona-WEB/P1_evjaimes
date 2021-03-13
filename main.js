@@ -35,6 +35,37 @@ function limpiarCarritoPantalla() {
   }
 }
 
+//LLAMADO DEL MODAL
+
+function displayModal() {
+  //Creamos el modal
+  // create the background modal div
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  // create the inner modal div with appended argument
+  const child = document.createElement("div");
+  child.classList.add("child");
+
+  //Contenido
+  let content = document.createElement("div");
+  content.className = "modal-content";
+
+  let body = document.createElement("div");
+  body.className = "modal-body";
+
+  let cosito = document.createElement("h2");
+  cosito.innerText = "Veamos";
+
+  body.appendChild(cosito);
+  content.appendChild(body);
+  child.appendChild(content);
+  // render the modal with child on DOM
+  modal.appendChild(child);
+
+  document.body.appendChild(modal);
+  modal.style.display = "block";
+}
+
 //ACTUALIZACIÓN DEL DICT
 
 function actualizarPedido(pedido, key, oper, price) {
@@ -50,7 +81,6 @@ function actualizarPedido(pedido, key, oper, price) {
 }
 
 //FUNCIÓN DE MANIPULACIÓN DE DOM
-//CAMBIO CHIQUITO
 //PRODUCTOS
 function ponerProductos(comida, section) {
   // //Agarramos el div de los productos
@@ -260,7 +290,7 @@ function tablaCarrito(pedido, actu) {
   }
   tbl.appendChild(tbdy);
 
-  //VAMOS A HACER DIVS
+  //TOTAL Y BOTONES
   let uno = document.createElement("div");
   uno.className = "row";
   uno.appendChild(tbl);
@@ -308,6 +338,12 @@ function tablaCarrito(pedido, actu) {
     carrito = [];
     let num = document.getElementById("numero");
     num.innerHTML = carrito.length + " Items";
+  };
+
+  //BOTON CANCELAR
+
+  boton1.onclick = () => {
+    displayModal();
   };
 }
 

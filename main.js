@@ -3,10 +3,10 @@ carrito = [];
 const URL = "restaurant.json";
 //CARGA
 
-const t = callback => {
-  fetch(URL).then(element => {
+const t = (callback) => {
+  fetch(URL).then((element) => {
     const a = element.json();
-    a.then(r => {
+    a.then((r) => {
       callback(r);
     });
   });
@@ -33,6 +33,20 @@ function limpiarCarritoPantalla() {
   while (node.firstChild) {
     node.removeChild(node.firstChild);
   }
+}
+
+//ACTUALIZACIÓN DEL DICT
+
+function actualizarPedido(pedido, key, oper, price) {
+  if (oper === "+") {
+    pedido[key]["quantity"] += 1;
+    pedido[key]["amount"] += price;
+  } else {
+    pedido[key]["quantity"] -= 1;
+    pedido[key]["amount"] -= price;
+  }
+  limpiarCarritoPantalla();
+  tablaCarrito(pedido, true);
 }
 
 //FUNCIÓN DE MANIPULACIÓN DE DOM
@@ -114,15 +128,17 @@ function ponerProductos(comida, section) {
 }
 
 //CARRITO
-function tablaCarrito(pedido) {
+function tablaCarrito(pedido, actu) {
   const conte = document.getElementById("cartasProductos");
   let divNombre = document.getElementById("tituloProductos");
 
   //Nombre
-  let nom = document.createElement("h1");
-  nom.innerText = "Order detail";
-  nom.className = "text-center";
-  divNombre.appendChild(nom);
+  if (actu == false) {
+    let nom = document.createElement("h1");
+    nom.innerText = "Order detail";
+    nom.className = "text-center";
+    divNombre.appendChild(nom);
+  }
 
   //TABLA
   var tbl = document.createElement("table");
@@ -135,7 +151,7 @@ function tablaCarrito(pedido) {
   var l = document.createTextNode("Item");
   thead1.appendChild(l);
   var thead2 = document.createElement("th");
-  var n = document.createTextNode("Qty.");
+  var n = document.createTextNode("Qty");
   thead2.appendChild(n);
 
   var thead3 = document.createElement("th");
@@ -174,15 +190,16 @@ function tablaCarrito(pedido) {
     let element = pedido[key];
     total += parseInt(element.quantity) * parseInt(element.unitPrice);
     var hilera = document.createElement("tr");
-    hilera.id="tableRow"+(i+1);
+    hilera.id = "tableRow" + (i + 1);
 
     var celda1 = document.createElement("td");
     var item = document.createTextNode(i + 1);
     celda1.appendChild(item);
     hilera.appendChild(celda1);
 
-    var celda2= document.createElement("td");
+    var celda2 = document.createElement("td");
     var qa = document.createTextNode(element.quantity);
+    qa.id = "Q" + (i + 1);
     celda2.appendChild(qa);
     hilera.appendChild(celda2);
 
@@ -209,6 +226,7 @@ function tablaCarrito(pedido) {
     let botonMenos = document.createElement("a");
     botonMenos.className = "btn btn-primary";
     botonMenos.innerText = "-";
+
     celda6.appendChild(botonMenos);
     celda6.appendChild(botonMas);
     hilera.appendChild(celda6);
@@ -217,33 +235,26 @@ function tablaCarrito(pedido) {
     tbdy.appendChild(hilera);
 
     //Botones de más y menos funcionales
-
     botonMenos.onclick = () => {
-      let pr=celda4.firstChild.nodeValue;
-      let Am=celda5.firstChild.nodeValue;
-      let Qa=celda2.firstChild.nodeValue;
-      celda2.removeChild(celda2.firstChild);
-      celda5.removeChild(celda5.firstChild);
-      console.log(typeof Qa);
-      console.log(typeof pr);
-      let newAM=document.createTextNode(Am-pr);
-      let newQa=document.createTextNode(Qa-1);
-      celda2.appendChild(newQa);
-      celda5.append(newAM);
-
+      let agarralo = pedido[key].unitPrice;
+      actualizarPedido(pedido, key, "-", agarralo);
     };
 
-    botonMas.onclick = () => {};
+    botonMas.onclick = () => {
+      let agarralo = pedido[key].unitPrice;
+      actualizarPedido(pedido, key, "+", agarralo);
+    };
 
     //Arreglo final
+    if (element.quantity != 0) {
+      let pp = new Object();
+      pp["item"] = i + 1;
+      pp["quantity"] = element.quantity;
+      pp["description"] = key;
+      pp["unitPrice"] = element.unitPrice;
 
-    let pp = new Object();
-    pp["item"] = i + 1;
-    pp["quantity"] = element.quantity;
-    pp["description"] = key;
-    pp["unitPrice"] = element.unitPrice;
-
-    arregloFinal.push(pp);
+      arregloFinal.push(pp);
+    }
 
     i = i + 1;
   }
@@ -306,7 +317,7 @@ function tablaCarrito(pedido) {
 let burguers = document.getElementById("burguers");
 burguers.onclick = () => {
   limpiarPantalla();
-  t(datos => {
+  t((datos) => {
     comida = datos[0].products;
     ponerProductos(comida, "Burguers");
   });
@@ -315,7 +326,7 @@ burguers.onclick = () => {
 let tacos = document.getElementById("tacos");
 tacos.onclick = () => {
   limpiarPantalla();
-  t(datos => {
+  t((datos) => {
     comida = datos[1].products;
     ponerProductos(comida, "Tacos");
   });
@@ -324,7 +335,7 @@ tacos.onclick = () => {
 let salads = document.getElementById("salads");
 salads.onclick = () => {
   limpiarPantalla();
-  t(datos => {
+  t((datos) => {
     comida = datos[2].products;
     ponerProductos(comida, "Salads");
   });
@@ -333,7 +344,7 @@ salads.onclick = () => {
 let desserts = document.getElementById("desserts");
 desserts.onclick = () => {
   limpiarPantalla();
-  t(datos => {
+  t((datos) => {
     comida = datos[3].products;
     ponerProductos(comida, "Desserts");
   });
@@ -342,7 +353,7 @@ desserts.onclick = () => {
 let drinks = document.getElementById("drinks");
 drinks.onclick = () => {
   limpiarPantalla();
-  t(datos => {
+  t((datos) => {
     comida = datos[4].products;
     ponerProductos(comida, "Drinks & Slides");
   });
@@ -368,5 +379,5 @@ carr.onclick = () => {
       dict[carrito[i].name]["amount"] += carrito[i].price;
     }
   }
-  tablaCarrito(dict);
+  tablaCarrito(dict, false);
 };

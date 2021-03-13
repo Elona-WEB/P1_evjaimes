@@ -34,6 +34,16 @@
   color: whitesmoke;
 }
 
+/*CUERPO*/
+
+/*TABLA DE CARRITO*/
+
+table {
+  align-items: center;
+  width: 100%;
+}
+
+/*PRODUCTOS*/
 .card {
   /* previously added styles */
   border-radius: 7px;
@@ -101,4 +111,10 @@
     top: 0;
     opacity: 1;
   }
+}
+
+
+/*footer*/
+footer{
+  margin: 2em;
 }

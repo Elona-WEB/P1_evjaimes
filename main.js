@@ -144,7 +144,6 @@ function displayModal() {
 }
 
 //ACTUALIZACIÓN DEL DICT
-
 function actualizarPedido(pedido, key, oper, price) {
   if (oper === "+") {
     pedido[key]["quantity"] += 1;
@@ -158,6 +157,7 @@ function actualizarPedido(pedido, key, oper, price) {
 }
 
 //FUNCIÓN DE MANIPULACIÓN DE DOM
+
 //PRODUCTOS
 function ponerProductos(comida, section) {
   // //Agarramos el div de los productos
@@ -472,7 +472,6 @@ drinks.onclick = () => {
 
 //CARRITO
 let carr = document.getElementById("carritoFoto");
-
 carr.onclick = () => {
   limpiarPantalla();
   //Vamos a procesar la lista del carrito

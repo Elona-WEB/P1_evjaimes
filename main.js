@@ -120,8 +120,7 @@ function displayModal() {
 
   botontrue.onclick = () => {
     carrito = [];
-    let items = document.getElementById("numero");
-    items.innerHTML = "0 Items";
+    getNumeroItems("0 Items");
     pedido = {};
     limpiarCarritoPantalla();
     tablaCarrito(pedido, true);
@@ -214,8 +213,7 @@ function ponerProductos(comida, section) {
     //Boton funcional
     botoncarrito.onclick = () => {
       carrito.push(yes);
-      let num = document.getElementById("numero");
-      num.innerHTML = carrito.length + " Items";
+      getNumeroItems(carrito.length + " Items");
     };
   }
 }
@@ -399,8 +397,7 @@ function tablaCarrito(pedido, actu) {
     limpiarCarritoPantalla();
     console.log(arregloFinal);
     carrito = [];
-    let num = document.getElementById("numero");
-    num.innerHTML = carrito.length + " Items";
+    getNumeroItems(carrito.length + " Items");
   };
 
   //BOTON CANCELAR
@@ -480,3 +477,10 @@ carr.onclick = () => {
   }
   tablaCarrito(dict, false);
 };
+
+//GETS
+
+function getNumeroItems(inner) {
+  let items = document.getElementById("numero");
+  items.innerHTML = inner;
+}

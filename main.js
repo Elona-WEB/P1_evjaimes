@@ -205,7 +205,7 @@ function ponerProductos(comida, section) {
     //Price
     let price = document.createElement("p");
     price.innerHTML = "$" + yes.price;
-    price.className = "card-text";
+    price.className = "card-text card-price";
 
     //Boton de carrito
     let botoncarrito = document.createElement("a");

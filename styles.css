@@ -1,13 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
+/* HEADER*/
 #carritoFoto {
-  width: 50px;
-  height: 50px;
-  padding: 0, 2em;
+  width: 3.2em;
+  height: 3.2em;
+  margin-top: 1em;
+}
+#numero {
+  margin-top: 1.5em;
+}
+
+.banner {
+  width: 100%;
 }
 
 .satisfy {
   font-family: "Satisfy", cursive;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
 }
 
 .card {
@@ -27,6 +37,10 @@
 }
 .card-title {
   margin-top: 1em;
+}
+
+.card-price {
+  font-weight: bold;
 }
 
 .modal {

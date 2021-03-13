@@ -46,24 +46,79 @@ function displayModal() {
   const child = document.createElement("div");
   child.classList.add("child");
 
+  let hr = document.createElement("hr");
   //Contenido
   let content = document.createElement("div");
   content.className = "modal-content";
 
+  let header = document.createElement("div");
+  header.className = "moda-header";
+  let textoHeader = document.createElement("h4");
+  textoHeader.innerText = "Cancel the order";
+  let close = document.createElement("span");
+  close.className = "close";
+  close.innerHTML = "&times;";
+  header.appendChild(close);
+  header.appendChild(textoHeader);
+  header.appendChild(hr);
+  content.appendChild(header);
+
   let body = document.createElement("div");
   body.className = "modal-body";
-
-  let cosito = document.createElement("h2");
-  cosito.innerText = "Veamos";
-
+  let cosito = document.createElement("p");
+  cosito.innerText = "Are you sure about cancelling the order?";
   body.appendChild(cosito);
+  body.appendChild(hr);
   content.appendChild(body);
+
+  //Footer
+  let footer = document.createElement("div");
+  footer.className = "modal-footer";
+
+  let botones = document.createElement("div");
+  botones.className = "container";
+  let ro1 = document.createElement("div");
+  ro1.className = "row";
+  let botontrue = document.createElement("a");
+  botontrue.className = "btn btn-primary";
+  botontrue.innerText = "Yes, I want to cancel the order";
+  ro1.appendChild(botontrue);
+
+  let ro2 = document.createElement("div");
+  ro2.className = "row";
+
+  let botonfalse = document.createElement("a");
+  botonfalse.className = "btn btn-primary";
+  botonfalse.innerText = "No, I want to continue adding products";
+  ro2.appendChild(botonfalse);
+
+  botones.appendChild(ro1);
+  botones.appendChild(ro2);
+  footer.appendChild(botones);
+  content.appendChild(footer);
+
   child.appendChild(content);
   // render the modal with child on DOM
   modal.appendChild(child);
 
   document.body.appendChild(modal);
   modal.style.display = "block";
+
+  close.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  botonfalse.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  botontrue, (onclick = () => {});
 }
 
 //ACTUALIZACIÓN DEL DICT
